@@ -1,0 +1,12 @@
+package com.store.trade.dao;
+
+import com.store.trade.bean.Trade;
+
+public interface TradeDao {
+
+	public void addTrade(Trade trade);
+
+	public void updateTradeExpiryFlag();
+	
+	public void updateTrade();
+}

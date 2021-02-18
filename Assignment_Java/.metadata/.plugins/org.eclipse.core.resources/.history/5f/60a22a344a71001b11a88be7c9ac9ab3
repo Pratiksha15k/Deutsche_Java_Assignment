@@ -1,0 +1,74 @@
+package com.store.trade;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.time.LocalDate;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import com.store.trade.bean.Trade;
+import com.store.trade.exception.TradeException;
+import com.store.trade.service.TradeService;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+
+@TestMethodOrder(OrderAnnotation.class)
+@SpringBootTest
+class ApplicationTests {
+
+	@Autowired
+	TradeService tradeService;
+	
+	@Test
+	@Order(1)
+	public void testAddTrade() {
+		Trade trade = new Trade();
+	    Trade savedTrade = null;
+		try {
+			trade.setTradeID("T4");
+			trade.setVersion(3);
+			trade.setBookID("B1");
+			trade.setCounterPartyID("CP1");
+			trade.setExpired("N");
+			trade.setMaturityDate(LocalDate.now().plusDays(3));
+			tradeService.addTrade(trade);
+			savedTrade = tradeService.findTrade(trade.getTradeID(), trade.getVersion());
+			System.out.println(savedTrade.toString());
+		} catch (TradeException e) {
+			e.printStackTrace();
+		}
+	    assertThat(savedTrade.getTradeID().length()>=0);
+	}
+	
+	
+	@Test
+	@Order(2)
+	public void testValidateTradeVersion() {
+		Trade trade = new Trade("T4", 1, "CP-1", "B1", LocalDate.of(2020, 05, 20), LocalDate.now(), "N");
+		try {
+			tradeService.validateVersion(trade);
+		}catch(Exception e) {
+			assertThatThrownBy(() -> {
+				tradeService.validateVersion(trade);	
+			}).isInstanceOf(TradeException.class);
+		}
+	}
+
+	@Test
+	@Order(3)
+	public void testTradeMaturityDate() {
+		Trade trade = new Trade("T5",1,"CP-1","B2",LocalDate.now().minusDays(2),LocalDate.now(), "N");
+	    Trade savedTrade = null;
+		try {
+			tradeService.addTrade(trade);
+			savedTrade = tradeService.findTrade(trade.getTradeID(), trade.getVersion());
+			System.out.println(savedTrade.toString());
+		} catch (TradeException e) {
+			assertThatExceptionOfType(TradeException.class);
+		}
+	    assertThat(savedTrade.getTradeID().length()>=0);
+	}
+}

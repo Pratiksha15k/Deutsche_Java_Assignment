@@ -1,0 +1,17 @@
+package com.store.trade.dao;
+
+import com.store.trade.bean.Trade;
+import com.store.trade.exception.TradeException;
+
+public interface TradeDao {
+
+	public  static Map<String,Trade> tradeMap =new ConcurrentHashMap<>();
+	
+	public void addTrade(Trade trade) throws TradeException;
+
+	public void updateTradeExpiryFlag() throws TradeException;
+	
+	public void updateTrade(Trade trade) throws TradeException;
+	
+	public Trade getTrade(int version) throws TradeException;
+}

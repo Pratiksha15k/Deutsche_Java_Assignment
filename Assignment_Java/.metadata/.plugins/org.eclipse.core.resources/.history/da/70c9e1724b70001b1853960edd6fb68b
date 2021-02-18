@@ -1,0 +1,5 @@
+package com.store.trade.dao;
+
+public interface TradeDao {
+
+}

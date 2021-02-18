@@ -1,0 +1,28 @@
+package com.store.trade.service.impl;
+
+import org.springframework.stereotype.Service;
+import com.store.trade.bean.Trade;
+import com.store.trade.service.TradeService;
+
+@Service
+public class TradeServiceImpl implements TradeService{
+
+	@Override
+	public void addTrade(Trade trade) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateTradeExpiryFlag() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateTrade() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

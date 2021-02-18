@@ -1,0 +1,64 @@
+package com.store.trade.dao.impl;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import com.store.trade.bean.Trade;
+import com.store.trade.dao.TradeDao;
+import com.store.trade.exception.TradeException;
+
+@Component
+@Repository("TradeDAOMap")
+public class TradeDaoImpl implements TradeDao{
+
+	public TradeDaoImpl() {
+		System.out.println("** Trade DAO implemented **");
+		Trade trade1 = new Trade("T1", 1, "CP-1", "B1", LocalDate.of(2020, 05, 20), LocalDate.now(), "N");
+		Trade trade2 = new Trade("T2", 2, "CP-2", "B1", LocalDate.of(2021, 05, 20), LocalDate.now(), "N");
+		Trade trade3 = new Trade("T2", 1, "CP-1", "B1", LocalDate.of(2021, 05, 20), LocalDate.of(2015, 03, 14), "N");
+		Trade trade4 = new Trade("T3", 3, "CP-3", "B2", LocalDate.of(2014, 05, 20), LocalDate.now(), "Y");
+		tradeMap.put(trade1.getTradeID(),trade1);
+		tradeMap.put(trade2.getTradeID(),trade2);
+		tradeMap.put(trade3.getTradeID(),trade3);
+		tradeMap.put(trade4.getTradeID(),trade4);
+	}
+	
+	@Override
+	public void addTrade(Trade trade) throws TradeException {
+		try {
+			if(trade.getCreatedDate()==null)
+				trade.setCreatedDate(LocalDate.now());
+		    tradeMap.put(trade.getTradeID()+trade.getVersion(),trade);
+		}catch(Exception e) {
+			throw new TradeException("Exception while adding trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+	@Override
+	public void updateTradeExpiryFlag() throws TradeException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Trade findTrade(String tradeId) throws TradeException {
+		try {
+			return tradeMap.get(tradeId);
+		}catch(Exception e) {
+			throw new TradeException("Exception while adding trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+	@Override
+	public List<Trade> findAll() throws TradeException {
+		try {
+			return tradeMap.values().stream().
+	                 collect(Collectors.toList());
+		}catch(Exception e) {
+			throw new TradeException("Exception while adding trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+}

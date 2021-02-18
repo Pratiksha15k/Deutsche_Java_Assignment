@@ -1,0 +1,91 @@
+package com.store.trade.bean;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Trade {
+	
+	@Id
+	@Column(name="TradeID")
+	String TradeID;
+
+	@Column(name="Version")
+	int Version;
+	
+	@Column(name="CounterPartyID")
+	String CounterPartyID;
+	
+	@Column(name="BookID")
+	String BookID;
+	
+	@Column(name="MaturityDate")
+	Date MaturityDate;
+	
+	@Column(name="createdDate")
+	Date createdDate;
+	
+	@Column(name="Expired")
+	String ExpiredDate;
+	
+	public String getTradeID() {
+		return TradeID;
+	}
+
+	public void setTradeID(String tradeID) {
+		TradeID = tradeID;
+	}
+
+	public int getVersion() {
+		return Version;
+	}
+
+	public void setVersion(int version) {
+		this.Version = version;
+	}
+
+	public String getCounterPartyID() {
+		return CounterPartyID;
+	}
+
+	public void setCounterPartyID(String counterPartyID) {
+		CounterPartyID = counterPartyID;
+	}
+
+	public String getBookID() {
+		return BookID;
+	}
+
+	public void setBookID(String bookID) {
+		BookID = bookID;
+	}
+
+	public Date getMaturityDate() {
+		return MaturityDate;
+	}
+
+	public void setMaturityDate(Date maturityDate) {
+		MaturityDate = maturityDate;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getExpired() {
+		return Expired;
+	}
+
+	public void setExpired(String expired) {
+		Expired = expired;
+	}
+}

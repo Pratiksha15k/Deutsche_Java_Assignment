@@ -1,0 +1,9 @@
+package com.store.trade.service.impl;
+
+public class TradeServiceImpl {
+
+	public TradeServiceImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

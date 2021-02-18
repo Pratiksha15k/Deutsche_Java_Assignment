@@ -1,0 +1,59 @@
+package com.store.trade.service.impl;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.store.trade.bean.Trade;
+import com.store.trade.dao.TradeDao;
+import com.store.trade.exception.TradeException;
+import com.store.trade.service.TradeService;
+
+@Service
+public class TradeServiceImpl implements TradeService{
+
+	@Autowired
+	TradeDao tradeDao;
+	
+	@Override
+	public boolean isValid(Trade trade) throws TradeException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean validateVersion(Trade trade, Trade oldTrade) throws TradeException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean validateMaturityDate(Trade trade) throws TradeException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void addTrade(Trade trade) throws TradeException {
+		trade.setCreatedDate(LocalDate.now());
+		tradeDao.addTrade(trade);
+	}
+
+	@Override
+	public List<Trade> findAll() throws TradeException {
+		return tradeDao.findAll();
+	}
+
+	@Override
+	public void updateExpiryFlagOfTrade() throws TradeException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Trade findTrade(String tradeId) throws TradeException {
+		return tradeDao.findTrade(tradeId);
+	}
+
+}

@@ -1,0 +1,17 @@
+# Database
+spring.datasource.url=jdbc:h2:file:E:/TradeDB/tradedb;AUTO_SERVER=TRUE
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+# Enabling H2 Console
+spring.h2.console.enabled=true
+# Custom H2 Console URL
+spring.h2.console.path=/h2
+spring.h2.console.settings.web-allow-others=true
+spring.jpa.hibernate.ddl-auto=update
+#Turn Statistics on and log SQL stmts
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.properties.hibernate.generate_statistics=false
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

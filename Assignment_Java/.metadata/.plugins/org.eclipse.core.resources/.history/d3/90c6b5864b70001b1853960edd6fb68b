@@ -1,0 +1,11 @@
+package com.store.trade.dao.impl;
+
+import com.store.trade.dao.TradeDao;
+
+public class TradeDaoImpl implements TradeDao{
+
+	public TradeDaoImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

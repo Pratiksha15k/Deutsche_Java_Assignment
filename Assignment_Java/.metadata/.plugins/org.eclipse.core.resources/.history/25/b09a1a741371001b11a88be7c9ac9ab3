@@ -1,0 +1,100 @@
+package com.store.trade.bean;
+
+import java.time.LocalDate;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Trades")
+public class Trade {
+	
+	@Id
+	String TradeID;
+
+	int Version;
+	
+	String CounterPartyID;
+	
+	String BookID;
+	
+	LocalDate MaturityDate;
+	
+	LocalDate createdDate;
+	
+	String isExpired;
+	
+	public Trade() {
+		super();
+	}
+
+	public Trade(String tradeID, int version, String counterPartyID, String bookID, LocalDate maturityDate,
+			LocalDate createdDate, String isExpired) {
+		super();
+		TradeID = tradeID;
+		Version = version;
+		CounterPartyID = counterPartyID;
+		BookID = bookID;
+		MaturityDate = maturityDate;
+		this.createdDate = createdDate;
+		isExpired = isExpired;
+	}
+	
+	public String getTradeID() {
+		return TradeID;
+	}
+
+	public void setTradeID(String tradeID) {
+		TradeID = tradeID;
+	}
+
+	public int getVersion() {
+		return Version;
+	}
+
+	public void setVersion(int version) {
+		this.Version = version;
+	}
+
+	public String getCounterPartyID() {
+		return CounterPartyID;
+	}
+
+	public void setCounterPartyID(String counterPartyID) {
+		CounterPartyID = counterPartyID;
+	}
+
+	public String getBookID() {
+		return BookID;
+	}
+
+	public void setBookID(String bookID) {
+		BookID = bookID;
+	}
+
+	public LocalDate getMaturityDate() {
+		return MaturityDate;
+	}
+
+	public void setMaturityDate(LocalDate maturityDate) {
+		MaturityDate = maturityDate;
+	}
+
+	public LocalDate getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDate localDate) {
+		this.createdDate = localDate;
+	}
+
+	public String getExpired() {
+		return isExpired;
+	}
+
+	public void setExpired(String isExpired) {
+		isExpired = isExpired;
+	}
+}

@@ -1,0 +1,55 @@
+package com.store.trade.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.store.trade.bean.Trade;
+import com.store.trade.dao.TradeDao;
+import com.store.trade.exception.TradeException;
+import com.store.trade.service.TradeService;
+
+@Service
+public class TradeServiceImpl implements TradeService{
+
+	@Autowired
+	TradeDao tradeDao;
+	
+	@Override
+	public void addTrade(Trade trade) throws TradeException {
+		try {
+			tradeDao.addTrade(trade);
+		}catch(Exception e) {
+			throw new TradeException("Exception while adding trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+	@Override
+	public void updateTradeExpiryFlag() throws TradeException {
+		try {
+			tradeDao.updateTradeExpiryFlag();
+		}catch(Exception e) {
+			throw new TradeException("Exception while updating trade expiry flag:"+e.getMessage(), e.getCause());
+		}
+	}
+
+	@Override
+	public void updateTrade(Trade trade) throws TradeException {
+		try {
+			tradeDao.updateTrade(trade);
+		}catch(Exception e) {
+			throw new TradeException("Exception while updating trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+	@Override
+	public Trade addTrade(Trade trade) throws TradeException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Trade getTrade(int version) throws TradeException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

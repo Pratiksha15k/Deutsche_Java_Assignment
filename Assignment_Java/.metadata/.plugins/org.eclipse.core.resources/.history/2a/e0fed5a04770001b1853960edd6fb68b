@@ -1,0 +1,80 @@
+package com.store.trade.bean;
+
+import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Trade {
+	
+	String TradeID;
+
+	int version;
+	
+	String CounterPartyID;
+	
+	String BookID;
+	
+	Date MaturityDate;
+	
+	Date createdDate;
+	
+	String Expired;
+	
+	public String getTradeID() {
+		return TradeID;
+	}
+
+	public void setTradeID(String tradeID) {
+		TradeID = tradeID;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public String getCounterPartyID() {
+		return CounterPartyID;
+	}
+
+	public void setCounterPartyID(String counterPartyID) {
+		CounterPartyID = counterPartyID;
+	}
+
+	public String getBookID() {
+		return BookID;
+	}
+
+	public void setBookID(String bookID) {
+		BookID = bookID;
+	}
+
+	public Date getMaturityDate() {
+		return MaturityDate;
+	}
+
+	public void setMaturityDate(Date maturityDate) {
+		MaturityDate = maturityDate;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getExpired() {
+		return Expired;
+	}
+
+	public void setExpired(String expired) {
+		Expired = expired;
+	}
+}

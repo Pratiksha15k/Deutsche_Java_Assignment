@@ -1,0 +1,12 @@
+package com.store.trade.service;
+
+import com.store.trade.bean.Trade;
+
+public interface TradeService {
+
+	public void addTrade(Trade trade);
+
+	public void updateTradeExpiryFlag();
+	
+	public void updateTrade();
+}

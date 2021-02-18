@@ -1,0 +1,24 @@
+package com.store.trade.bean;
+
+import java.util.Date;
+import javax.persistent.Entity;
+
+@Entity
+@Table
+public class Trade {
+	
+	String TradeID;
+	
+	int version;
+	
+	String CounterPartyID;
+	
+	String BookID;
+	
+	Date MaturityDate;
+	
+	Date createdDate;
+	
+	String Expired;
+	
+}

@@ -1,0 +1,23 @@
+package com.store.trade.service;
+
+import java.util.List;
+
+import com.store.trade.bean.Trade;
+import com.store.trade.exception.TradeException;
+
+public interface TradeService {
+	
+	public boolean isValid(Trade trade)throws TradeException;
+	
+	public boolean validateVersion(Trade trade)throws TradeException;
+	
+	public boolean validateMaturityDate(Trade trade)throws TradeException;
+	
+	public void addTrade(Trade trade)throws TradeException;
+	
+	public List<Trade> findAll()throws TradeException;
+	
+	public Trade findTrade(String tradeId)throws TradeException;
+	
+	public void updateExpiryFlagOfTrade()throws TradeException;
+}

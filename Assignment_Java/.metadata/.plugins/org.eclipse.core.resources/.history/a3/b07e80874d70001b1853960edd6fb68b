@@ -1,0 +1,57 @@
+package com.store.trade.dao.impl;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
+import com.store.trade.bean.Trade;
+import com.store.trade.dao.TradeDao;
+import com.store.trade.exception.TradeException;
+
+@Component
+public class TradeDaoImpl implements TradeDao{
+
+	@PersistenceContext
+	private EntityManager entityManager;
+	
+	@Override
+	public void addTrade(Trade trade) throws TradeException {
+		Transaction transaction = null;
+		Session session = null;
+		try {
+			session=entityManager.unwrap(Session.class);
+			transaction=session.beginTransaction();
+			session.save(trade);
+			transaction.commit();
+		}catch(Exception e) {
+			transaction.rollback();
+			throw new TradeException("Exception while adding trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+	@Override
+	public void updateTradeExpiryFlag() throws TradeException {
+		try {
+
+		}catch(Exception e) {
+			
+		}
+	}
+
+	@Override
+	public void updateTrade(Trade trade) throws TradeException {
+		Transaction transaction = null;
+		Session session = null;
+		try {
+			session=entityManager.unwrap(Session.class);
+			transaction=session.beginTransaction();
+			session.update(trade);
+			transaction.commit();
+		}catch(Exception e) {
+			transaction.rollback();
+			throw new TradeException("Exception while adding trade :"+e.getMessage(), e.getCause());
+		}
+	}
+
+}
